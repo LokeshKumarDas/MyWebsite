@@ -1,0 +1,521 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    /* Set background image */
+    background-image: url("background.jpg");
+    /* Specify how the background image should be sized and positioned */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    width: 100vw; /* Set the width of the background to cover the entire viewport width */
+    height: 100vh; /* Set the height of the background to cover the entire viewport height */
+    overflow: hidden;
+}
+
+
+/* Create an overlay pseudo-element */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Set background color with opacity */
+    background-color: rgba(0, 0, 0, 0.45); /* Adjust the last value (0.5) for opacity (range: 0 to 1) */
+    /* Ensure the overlay appears behind other content */
+    z-index: -1;
+}
+
+/* Style for the title bar */
+.title-bar {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* Gradient from transparent to opaque white */
+    color: #000000; /* Text color */
+    padding: 10px 20px; /* Padding around the text */
+    position: fixed; /* Fix the title bar at the top */
+    width: 100%; /* Occupy full width of the viewport */
+    top: -100px; /* Align above the viewport initially */
+    z-index: 1000; /* Ensure the title bar is on top of other content */
+    animation: titleAnimation 1s forwards; /* Apply animation to title bar */
+}
+
+/* Style for the website title */
+.title-bar h1 {
+    margin: 0; /* Remove margin */
+    font-size: 3.3vw; /* Adjust font size */
+    display: inline; /* Ensure title stays on the same line as navigation */
+    opacity: 0; /*Initially hide the title */
+    font-weight: 700;
+    font-family: "Dancing Script"
+}
+
+/* Style for the navigation links */
+.title-bar nav ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: inline-flex; /* Use flexbox for navigation items */
+}
+
+.title-bar nav ul li {
+    opacity: 0; /* Initially hide the list items */
+    animation: navAnimation 1.5s forwards; /* Apply animation to navigation items */
+    display: flex;
+    padding: 0px 3vw;
+}
+
+.links {
+    color: #000000; /* Text color for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 2.1vw; /* Adjust font size */
+    font-weight: 750; /* Adjust font boldness */
+    font-family: "Roboto Condensed"
+}
+
+.links:hover {
+    color: red; /* New color on hover */
+    cursor: pointer; /* change cursor while hovering */
+}
+
+/* Animation for title bar */
+@keyframes titleAnimation {
+    from {
+        top: -100px; /* Start above the viewport */
+    }
+    to {
+        top: 0; /* Move down to normal position */
+    }
+}
+
+/* Animation for navigation */
+@keyframes navAnimation {
+    from {
+        opacity: 0;
+        transform: translateX(-20px); /* Move from left */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px); /* Move to normal position */
+    }
+}
+
+nav {
+    display: inline;
+    padding-left: 4vw;
+}
+
+.moving-photograph {
+    position: relative; /* Fix the photograph position */
+    top: 100px; /* Initial fixed height from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    width: 187px; /* Set width of the photograph */
+    height: 200px; /* Set height of the photograph */
+    background-image: url('myPhoto.png'); /* Set background image */
+    background-size: cover; /* Cover the container with the background image */
+    background-repeat: no-repeat; /* Prevent repetition of background image */
+    animation: moveUp 4s forwards; /* Apply animation to move up in 2 seconds */
+    opacity: 0; /* Initially hide the photograph */
+    border: 3px solid black;
+    border-radius: 100%;
+}
+
+.imageBorder{
+    padding: 10px;
+    border-color: 20px solid white;
+}
+@keyframes moveUp {
+    from {
+        top: 50vh; /* Start position */
+        opacity: 0; /* Start opacity */
+    }
+    to {
+        top: 20vh; /* End position */
+        opacity: 0.9; /* End opacity */
+    }
+}
+
+.photoFrame{
+    position: relative;
+    border: 5px solid black;
+    width: 207px; /* Set width of the photograph */
+    height: 220px; /* Set height of the photograph */
+    border-radius: 100%;
+    z-index: 1;
+    top: -14.05px;
+    left: -7.7%;
+}
+
+
+.intro {
+    /* font-size: larger; */
+    position: fixed;
+    top: 52.5vh;
+    font-size: 5.8vw;
+    color: white;
+    width: 50%;
+    /* display: flex; */
+    flex-direction: row;
+    margin-left: 25vw;
+    font-family: "Agbalumo", system-ui;
+    font-weight: 350;
+    font-style: normal;
+    visibility: hidden; /* Initially hidden */
+    animation: fadeIn 1s forwards; /* Animation to fade in */
+}
+
+#hello {
+    font-size: 2.7vw;
+    margin-left: 20vw;
+    font-style: italic;
+}
+
+#end {
+    font-size: 2vw;
+    margin-left: 70%;
+    margin-top: 14.5vw;
+    font-family: "Roboto Condensed";
+    font-weight: 750; /* Adjust font boldness */
+}
+
+/* Styles for the contact form popup */
+.contact-form {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    font-weight: 700;
+    font-family: "Dancing Script"
+}
+
+.contact-content {
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(238, 12, 12);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    display: grid;
+    margin-top: 0em;
+    font-family: Arial
+}
+
+button {
+    margin-top: 0.5em;
+    padding-block: 1px;
+    border-width: 2px;
+    border-style: outset;
+    background: black;
+    color : white;
+    border-radius: 9px;
+}
+
+.aboutMeBox {
+    color: white;
+    background: #000000a3;
+    display: grid;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 4.5rem;
+    padding: 21px 15px;
+    font-family: "Dancing Script";
+    position: absolute;
+    visibility: hidden;
+    animation: fadeIn 1s forwards;
+}
+
+.card {
+    font-size: 2.7vw;
+    margin-left: 3vw;
+    margin-top: 2.7vw;
+    border-radius: 54px;
+    font-weight: 700;
+    width: 40%;
+}
+
+
+.card2 {
+    font-size: 1.5vw;
+    margin-left: 37vw;
+    /* margin-right: 29px; */
+    margin-top: -8.5vw;
+    border-radius: 54px;
+    font-weight: 400;
+    width: 65%;
+    /* height: 50%; */
+    padding-bottom: 2vw;
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* CSS rules for screens up to 768px wide (typically tablets) */
+  }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      visibility: visible; /* Make the div visible when opacity is fully faded in */
+    }
+}
+
+.aboutMeHeading {
+    margin-bottom: 5px;
+    margin-left: 9px;
+    font-size: 1.5vw;
+    font-family: "Agbalumo";
+    font-style: italic;
+}
+
+#aboutMeDesc {
+    padding: 10px;
+    width: 67%;
+    margin-top: -0.5vw;
+}
+
+
+.container {
+    position: fixed;
+    margin-left: 18%;
+    margin-top: 18vh;
+    width: 60%;
+    background: #000000a3;
+}
+
+.contactHeading {
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.horizontal-line {
+    border-top: 1px solid rgb(255, 255, 255);
+    width: 50%; /* Adjust the width as needed */
+    margin: 20px auto; /* Adjust the margin as needed */
+}
+  
+.contact-info {
+    margin-top: 2.5vw;
+    display: inline;
+    color: #ffffff;
+}
+
+.contact-item-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4vh;
+    font-size: 2vw;
+}
+
+.imgEmail {
+    width: 8vw;
+    height: 4vw;
+    margin: -1vw 4.5vw;
+    /* margin-right: 4.5vw; */
+}
+
+.phone {
+    margin: 2vh 0vw;
+    margin-left: -6vw;
+    margin-bottom: 7vh;
+}
+
+.contact-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgphone {
+    width: 4.3vw;
+    height: 4.3vw;
+    margin: -0.5vw 5.2vw;
+    border-radius: 15px;
+    margin-right: 13vw;
+}
+
+.imgin {
+    width: 4vw;
+    height: 4.2vw;
+    margin: 2vw 2vw;
+}
+
+.imggit {
+    width: 5vw;
+    height: 5vw;
+    margin: 0px 10px;
+    margin-right: 3vw;
+}
+
+.imginsta {
+    width: 4vw;
+    height: 4vw;
+    /* margin: 2.7vw 36.3vw; */
+    /* margin-left: 42vw; */
+}
+
+
+.portfolio {
+    margin-top: 11vh;
+    display: block;
+    color: white;
+    align-items: baseline;
+    justify-content: center;
+}
+
+details {
+    display: inline-block;
+    margin-top: 2.5vh;
+}
+
+.card1 {
+    color: white;
+    background: rgba(0, 0, 0, 0.64);
+    font-size: 2.05vw;
+    display: inline-block;
+    padding: 15px 2vw;
+    margin-left: 45%;
+    /* margin-right: 40px; */
+    width: 33%;
+    border-radius: 54px;
+    font-weight: 800;
+    font-family: "Dancing Script";
+    position: relative;
+    visibility: hidden;
+    animation: 1s ease 0s 1 normal forwards running fadeIn;
+    outline: none;
+}
+
+.card1:focus{
+    outline: none;
+}
+
+.card1[open] {
+    outline: none;
+}
+
+.c1[open] > summary + * {
+    display: block; /* Display the content when details is open */
+}
+
+.c1[open] > summary + *:not(summary) {
+    position: absolute;
+    left: -100%;
+    color: black;
+    top: 0vw;
+    width: 70%;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 7px solid rgb(0, 0, 0);
+}
+
+.c2[open] > summary + * {
+    display: block; /* Display the content when details is open */
+}
+
+.c2[open] > summary + *:not(summary) {
+    position: absolute;
+    left: -100%;
+    color: black;
+    top: -6vw;
+    width: 70%;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 7px solid black;
+}
+
+.c3[open] > summary + * {
+    display: block; /* Display the content when details is open */
+}
+  
+.c3[open] > summary + *:not(summary) {
+    position: absolute;
+    left: -100%;
+    color: black;
+    top: -9vw;
+    width: 70%;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 7px solid black;
+}
+
+.c4[open] > summary + * {
+    display: block; /* Display the content when details is open */
+}
+
+.c4[open] > summary + *:not(summary) {
+    position: absolute;
+    left: -100%;
+    color: black;
+    top: -13vw;
+    width: 70%;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 7px solid black;
+}
+
+.c5[open] > summary + * {
+    display: block; /* Display the content when details is open */
+}
+
+.c5[open] > summary + *:not(summary) {
+    position: absolute;
+    left: -100%;
+    color: black;
+    top: -17vw;
+    width: 70%;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 7px solid black;
+}
+
+.c6[open] > summary + * {
+    display: block; /* Display the content when details is open */
+}
+
+.c6[open] > summary + *:not(summary) {
+    position: absolute;
+    left: -100%;
+    color: black;
+    top: -21vw;
+    width: 70%;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 7px solid black;
+    font-size: 1.8vw;
+}
+
+
+.card1:focus-within summary + * {
+    display: block; /* Display content of focused details */
+  }
+
+  .card1:not(:focus-within) summary + * {
+    display: none; /* Hide content of other details */
+  }

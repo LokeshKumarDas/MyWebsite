@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="Lokesh Kumar Das" content="Lokesh Kumar Das">
+    <meta name="google-site-verification" content="SP3R6RHA5UFH805CKyXvFyFhrOCBEYUvT1JGxssNHMo" />
+
+    <title>Lokesh Kumar Das</title>
+    <link rel="stylesheet" href="myWebsite.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="title-bar" id="titleBar">
+        <h1>Lokesh Kumar Das</h1>
+        <nav>
+            <ul id="navList">
+                <li><a href="index.html" class="links">Home</a></li>
+                <li><a href="aboutMe.html" class="links">About Me</a></li>
+                <li><a href="resume.pdf" class="links">Resume</a></li>
+                <li><a href="portfolio.html" class="links">Portfolio</a></li>
+                <li><a href="contact.html" class="links">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="moving-photograph" id="movingPhotograph">
+        <div class="photoFrame"></div> <!-- The photograph container -->
+    </div>
+
+    <div class="intro" id="hello">
+        <p>
+            Hello!!! I'm . . .
+        </p>
+    </div>
+
+    <div class="intro">
+        <p>
+            Lokesh Kumar Das
+        </p>
+    </div>
+
+    <div class="intro links contact-link" id="end" onclick="openContactForm()">
+        <p>
+            Let's connect ...
+        </p>
+    </div>
+
+    <!-- Contact Form Popup -->
+    <div id="contactForm" class="contact-form">
+        <div class="contact-content">
+            <span class="close" onclick="closeContactForm()">&times;</span>
+            <div>
+                <h2>Contact Me</h2>
+            </div>
+            <form id="contactFormInner" action="https://api.web3forms.com/submit" method="POST">
+
+                <input type="hidden" name="access_key" value="e2497b4b-c242-4806-a10b-f32fe2f27b81">
+
+            <!-- <form id="contactFormInner"> -->
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Glad! Just waiting for your message"></textarea>
+                <button type="submit" id="submit-btn" class="close">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="myWebsite.js"></script> <!-- Include JavaScript file -->
+
+</body>
+
+</html>
