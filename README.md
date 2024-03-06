@@ -7,6 +7,8 @@ Each of this pages are inter-linked and to design them I used myWebsite.css file
 I also hosted this website on netlify, you can visit it on https://lokeshkumardas.netlify.app/
 
 To submit my website to Google Search Console, I created sitemap online, you can see the myWebsite.xml file.
+
 This project gave me a good understanding of Frontend Web-Developement.
 Hope, this project helps you.
+
 Thanks !!!
